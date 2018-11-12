@@ -1,0 +1,34 @@
+{
+    "name": "dvajs-snippets",
+    "displayName": "DvaJs Snippets",
+    "description": "Simple DvaJs Snippets generator",
+    "version": "0.0.1",
+    "publisher": "byzhkc3",
+    "keywords": [
+		"snippets",
+		"react",
+		"redux",
+		"javascript",
+        "dva",
+        "dvajs",
+        "redux-saga"
+	],
+    "engines": {
+        "vscode": "^1.28.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/snippets.json"
+            },
+            {
+				"language": "javascriptreact",
+				"path": "./snippets/snippets.json"
+			}
+        ]
+    }
+}

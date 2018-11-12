@@ -1,0 +1,143 @@
+{
+  "init Template": {
+    "prefix": "admodel",
+    "body": "import { $2 } from '${1:module}'$0",
+    "description": "创建初始化模版"
+  },
+  "create dva component": {
+    "prefix": "adcc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = () => {",
+      "  return (",
+      "    <div>",
+      "      ${1:${TM_FILENAME_BASE}}",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ],
+    "description": "快速创建组件"
+  },
+  "create dva model": {
+    "prefix": "adcm",
+    "body": [
+      "export default {",
+      "",
+      "  namespace: '${1:}',",
+      "",
+      "  state: {},",
+      "", 
+      "  reducers: {",
+      "    save(state, action) {",
+      "      return { ...state, ...action.payload };",
+      "    },",
+      "  },",
+      "",
+      "  effects: {",
+      "    *fetch({ payload }, { call, put }) {",
+      "      yield put({ type: 'save' });",
+      "    },",
+      "  },",
+      "",
+      "  subscriptions: {",
+      "    setup({ dispatch, history }) {",
+      "",
+      "    },",
+      "  },",
+      "",
+      "};"
+    ],
+    "description": "快速创建model"
+  },
+  "create dva router page": {
+    "prefix": "adcrp",
+    "body":[
+      "import React from 'react';",
+      "import { connect } from 'dva';",
+      "import styles from './${1:${TM_FILENAME_BASE}}.css';",
+      "",
+      "function ${1:${TM_FILENAME_BASE}}() {",
+      "  return (",
+      "    <div>",
+      "      ${1:${TM_FILENAME_BASE}}",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "};",
+      "",
+      "export default connect()(${1:${TM_FILENAME_BASE}});"
+    ],
+    "description": "快速创建路由页面组件带connect连接"
+  },
+  "create dva services component": {
+    "prefix": "adcs",
+    "body": [
+      "import request from '../utils/request';",
+      "",
+      "export const ${1:} = () => {",
+      "  return request('/api/users');",
+      "};"
+    ],
+    "description": "快速创建services模板"
+  },
+  "create dva model reducers object": {
+    "prefix": "adcmrd",
+    "body": [
+      "reducers: {",
+      "  ${1:''}(state, action) {",
+      "    return { ...state, ...action.payload };",
+      "  },",
+      "},"
+    ],
+    "description": "快速创建model reducers对象"
+  },
+  "create dva model reducers methods": {
+    "prefix": "adcmrdm",
+    "body": [
+      "  ${1:}(state, action) {",
+      "    return { ...state, ...action.payload };",
+      "  },"
+    ],
+    "description": "快速创建model reducers 方法"
+  },
+  "create dva model effects object": {
+    "prefix": "adcmef",
+    "body": [
+      "effects: {",
+      "  *${1:''}({ payload }, { call, put }) {",
+      "    yield put({ type: 'save' });",
+      "  },",
+      "},"
+    ],
+    "description": "快速创建model effects 对象"
+  },
+  "create dva model effects methods": {
+    "prefix": "adcmefm",
+    "body": [
+      "  *${1:''}({ payload }, { call, put }) {",
+      "    yield put({ type: 'save' });",
+      "  },"
+    ],
+    "description": "快速创建model effects 方法"
+  },
+  "create dva model subscriptions object": {
+    "prefix": "adcmss",
+    "body": [
+      "subscriptions: {",
+      "  setup({ dispatch, history }) {",
+      "",
+      "  },",
+      "},"
+    ],
+    "description": "快速创建model subscriptions 对象"
+  }
+}
