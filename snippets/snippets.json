@@ -1,15 +1,12 @@
 {
-  "init Template": {
-    "prefix": "admodel",
-    "body": "import { $2 } from '${1:module}'$0",
-    "description": "创建初始化模版"
-  },
   "create dva component": {
     "prefix": "adcc",
     "body": [
-      "import React from 'react';",
+      "import React,{ Component } from 'react';",
+      "import PropTypes from 'prop-types';",
       "",
-      "const ${1:${TM_FILENAME_BASE}} = () => {",
+      "class ${1:${TM_FILENAME_BASE}} extends Component{",
+        
       "  return (",
       "    <div>",
       "      ${1:${TM_FILENAME_BASE}}",
@@ -47,9 +44,9 @@
       "  },",
       "",
       "  subscriptions: {",
-      "    setup({ dispatch, history }) {",
-      "",
-      "    },",
+      "   init({dispatch}){",
+      "      dispatch({ });",
+      "   }",
       "  },",
       "",
       "};"
@@ -59,7 +56,8 @@
   "create dva router page": {
     "prefix": "adcrp",
     "body":[
-      "import React from 'react';",
+      "import React,{ PureComponent, Fragment } from 'react';",
+      "import PropTypes from 'prop-types';",
       "import { connect } from 'dva';",
       "import styles from './${1:${TM_FILENAME_BASE}}.css';",
       "",
@@ -74,9 +72,49 @@
       "${1:${TM_FILENAME_BASE}}.propTypes = {",
       "};",
       "",
-      "export default connect()(${1:${TM_FILENAME_BASE}});"
+      "const mapStateToProps = (state) => {",
+      " const { loading } = state['NAMESPACE'];",
+      " return {",
+      "     loading",
+      " };",
+      "}",
+      "",
+      "const mapDispatchToProps = {};",
+      "",
+      "export default connect(mapStateToProps,mapDispatchToProps)(${1:${TM_FILENAME_BASE}});"
     ],
     "description": "快速创建路由页面组件带connect连接"
+  },
+  "create dva no-router page": {
+    "prefix": "adcnrp",
+    "body":[
+      "import React,{ PureComponent, Fragment } from 'react';",
+      "import { connect } from 'dva-no-router';",
+      "import styles from './${1:${TM_FILENAME_BASE}}.css';",
+      "",
+      "function ${1:${TM_FILENAME_BASE}}() {",
+      "  return (",
+      "    <div>",
+      "      ${1:${TM_FILENAME_BASE}}",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "};",
+      "",
+      "const mapStateToProps = (state) => {",
+      " const { loading } = state['NAMESPACE'];",
+      " return {",
+      "     loading",
+      " };",
+      "}",
+      "",
+      "const mapDispatchToProps = {};",
+      "",
+      "export default connect(mapStateToProps,mapDispatchToProps)(${1:${TM_FILENAME_BASE}});"
+    ],
+    "description": "快速创建非路由页面组件带connect连接"
   },
   "create dva services component": {
     "prefix": "adcs",
@@ -103,7 +141,7 @@
   "create dva model reducers methods": {
     "prefix": "adcmrdm",
     "body": [
-      "  ${1:}(state, action) {",
+      "  ${1:''}(state, action) {",
       "    return { ...state, ...action.payload };",
       "  },"
     ],
