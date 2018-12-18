@@ -13,7 +13,7 @@
 
 ~~因为目前没有发布到vs code的官方应用商店，所以需要您手动安装并启用本插件，步骤如下:~~
 
-~~1,下载邮件中 名为 DvaJs-Snippets 的附件文件 ~~
+~~1,下载邮件中 名为 DvaJs-Snippets 的附件文件~~
 
 ~~2,打开终端执行 cd .vscode/extensions/ && open .~~
 
