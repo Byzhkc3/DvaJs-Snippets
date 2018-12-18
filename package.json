@@ -2,7 +2,7 @@
     "name": "dvajs-snippets",
     "displayName": "DvaJs Snippets",
     "description": "Simple DvaJs Snippets generator",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "repository":"https://github.com/Byzhkc3/DvaJs-Snippets",
     "publisher": "zkiie",
     "icon": "img/logo.png",

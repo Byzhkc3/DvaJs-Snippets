@@ -11,11 +11,15 @@
 
 ## Extension Settings(插件设置)
 
-因为目前没有发布到vs code的官方应用商店，所以需要您手动安装并启用本插件，步骤如下:
-1,下载邮件中 名为 DvaJs-Snippets 的附件文件 
-2,打开终端执行 cd .vscode/extensions/ && open .
-3,将解压出来的 DvaJs-Snippets 目录放到 弹出来的 extensions 文件夹下
-4,打开 vs code，选择插件管理（也可以 shift+ command + x 快捷打开）,在DISABLED 选项里找到 DvaJs Snippets 激活并重载即可使用
+~~因为目前没有发布到vs code的官方应用商店，所以需要您手动安装并启用本插件，步骤如下:~~
+
+~~1,下载邮件中 名为 DvaJs-Snippets 的附件文件 ~~
+
+~~2,打开终端执行 cd .vscode/extensions/ && open .~~
+
+~~3,将解压出来的 DvaJs-Snippets 目录放到 弹出来的 extensions 文件夹下~~
+
+~~4,打开 vs code，选择插件管理（也可以 shift+ command + x 快捷打开）,在DISABLED 选项里找到 DvaJs Snippets 激活并重载即可使用~~
 
 
 ## Basic Methods(基础语法)
