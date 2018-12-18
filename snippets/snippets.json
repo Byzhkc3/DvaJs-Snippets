@@ -6,12 +6,13 @@
       "import PropTypes from 'prop-types';",
       "",
       "class ${1:${TM_FILENAME_BASE}} extends Component{",
-        
-      "  return (",
-      "    <div>",
-      "      ${1:${TM_FILENAME_BASE}}",
-      "    </div>",
-      "  );",
+      "  render(){",
+      "   return (",
+      "       <div>",
+      "         ${1:${TM_FILENAME_BASE}}",
+      "       </div>",
+      "     );",
+      "   }",
       "};",
       "",
       "${1:${TM_FILENAME_BASE}}.propTypes = {",
@@ -20,10 +21,106 @@
       "",
       "export default ${1:${TM_FILENAME_BASE}};"
     ],
-    "description": "快速创建组件"
+    "description": "快速创建普通组件"
+  },
+  "create dva PureComponent": {
+    "prefix": "adcpc",
+    "body": [
+      "import React,{ PureComponent } from 'react';",
+      "import PropTypes from 'prop-types';",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends PureComponent{",
+      "  render(){",
+      "   return (",
+      "       <div>",
+      "         ${1:${TM_FILENAME_BASE}}",
+      "       </div>",
+      "     );",
+      "   }",
+      "};",
+      "",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ],
+    "description": "快速创建PureComponent组件"
+  },
+  "create dva router page": {
+    "prefix": "adcrpc",
+    "body":[
+      "import React,{ PureComponent, Fragment } from 'react';",
+      "import PropTypes from 'prop-types';",
+      "import { connect } from 'dva';",
+      "import styles from './${1:${TM_FILENAME_BASE}}.less';",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends PureComponent{",
+      "  render(){",
+      "     return (",
+      "       <Fragment>",
+      "         ${1:${TM_FILENAME_BASE}}",
+      "       </Fragment>",
+      "     );",
+      "   }",
+      "}",
+      "",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "",
+      "};",
+      "",
+      "const mapStateToProps = (state) => {",
+      "   const { loading } = state['NAMESPACE'];",
+      "   return {",
+      "       loading",
+      "   };",
+      "}",
+      "",
+      "const mapDispatchToProps = {",
+      "",
+      "};",
+      "",
+      "export default connect(mapStateToProps,mapDispatchToProps)(${1:${TM_FILENAME_BASE}});"
+    ],
+    "description": "快速创建路由页面组件带connect连接"
+  },
+  "create dva no-router page": {
+    "prefix": "adcnrpc",
+    "body":[
+      "import React,{ PureComponent, Fragment } from 'react';",
+      "import { connect } from 'dva-no-router';",
+      "import styles from './${1:${TM_FILENAME_BASE}}.less';",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends PureComponent{",
+      "  render(){",
+      "       return (",
+      "         <Fragment>",
+      "           ${1:${TM_FILENAME_BASE}}",
+      "         </Fragment>",
+      "       );",
+      "   }",
+      "}",
+      "",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "};",
+      "",
+      "const mapStateToProps = (state) => {",
+      " const { loading } = state['NAMESPACE'];",
+      " return {",
+      "     loading",
+      " };",
+      "}",
+      "",
+      "const mapDispatchToProps = {",
+      "",
+      "};",
+      "",
+      "export default connect(mapStateToProps,mapDispatchToProps)(${1:${TM_FILENAME_BASE}});"
+    ],
+    "description": "快速创建非路由页面组件带connect连接"
   },
   "create dva model": {
-    "prefix": "adcm",
+    "prefix": "admodel",
     "body": [
       "export default {",
       "",
@@ -53,129 +150,138 @@
     ],
     "description": "快速创建model"
   },
-  "create dva router page": {
-    "prefix": "adcrp",
-    "body":[
-      "import React,{ PureComponent, Fragment } from 'react';",
-      "import PropTypes from 'prop-types';",
-      "import { connect } from 'dva';",
-      "import styles from './${1:${TM_FILENAME_BASE}}.css';",
-      "",
-      "function ${1:${TM_FILENAME_BASE}}() {",
-      "  return (",
-      "    <div>",
-      "      ${1:${TM_FILENAME_BASE}}",
-      "    </div>",
-      "  );",
-      "}",
-      "",
-      "${1:${TM_FILENAME_BASE}}.propTypes = {",
-      "};",
-      "",
-      "const mapStateToProps = (state) => {",
-      " const { loading } = state['NAMESPACE'];",
-      " return {",
-      "     loading",
-      " };",
-      "}",
-      "",
-      "const mapDispatchToProps = {};",
-      "",
-      "export default connect(mapStateToProps,mapDispatchToProps)(${1:${TM_FILENAME_BASE}});"
+  "create dva model reducers object": {
+    "prefix": "admrd",
+    "body": [
+      "reducers: {",
+      "  ${1:NAME}(state, action) {",
+      "    return { ...state, ...action.payload };",
+      "  },",
+      "}"
     ],
-    "description": "快速创建路由页面组件带connect连接"
+    "description": "快速创建model reducers对象"
   },
-  "create dva no-router page": {
-    "prefix": "adcnrp",
-    "body":[
-      "import React,{ PureComponent, Fragment } from 'react';",
-      "import { connect } from 'dva-no-router';",
-      "import styles from './${1:${TM_FILENAME_BASE}}.css';",
-      "",
-      "function ${1:${TM_FILENAME_BASE}}() {",
-      "  return (",
-      "    <div>",
-      "      ${1:${TM_FILENAME_BASE}}",
-      "    </div>",
-      "  );",
-      "}",
-      "",
-      "${1:${TM_FILENAME_BASE}}.propTypes = {",
-      "};",
-      "",
-      "const mapStateToProps = (state) => {",
-      " const { loading } = state['NAMESPACE'];",
-      " return {",
-      "     loading",
-      " };",
-      "}",
-      "",
-      "const mapDispatchToProps = {};",
-      "",
-      "export default connect(mapStateToProps,mapDispatchToProps)(${1:${TM_FILENAME_BASE}});"
+  "create dva model reducers methods": {
+    "prefix": "admrdm",
+    "body": [
+      "${1:NAME}(state, action) {",
+      "   return { ...state, ...action.payload };",
+      "},"
     ],
-    "description": "快速创建非路由页面组件带connect连接"
+    "description": "快速创建model reducers 方法"
+  },
+  "create dva model effects object": {
+    "prefix": "admef",
+    "body": [
+      "effects: {",
+      "  *${1:NAME}({ payload }, { call, put }) {",
+      "    yield put({ type: 'save' });",
+      "  },",
+      "}"
+    ],
+    "description": "快速创建model effects 对象"
+  },
+  "create dva model effects methods": {
+    "prefix": "admefm",
+    "body": [
+      "*${1:NAME}({ payload }, { call, put }) {",
+      "   yield put({ type: 'save' });",
+      "},"
+    ],
+    "description": "快速创建model effects 方法"
   },
   "create dva services component": {
     "prefix": "adcs",
     "body": [
       "import request from '../utils/request';",
+      "import qs from 'qs';",
       "",
-      "export const ${1:} = () => {",
-      "  return request('/api/users');",
-      "};"
+      "export async const getMethods = () => {",
+      "   return request('URL');",
+      "};",
+      "export async const postQuery = (params) => {",
+      "   return request('URL', {",
+      "     method: 'post',",
+      "     data: qs.stringify(params),",
+      "  });",
+      "}",
+      "export async const jsonPost = (params) => {",
+      "   return request('URL', {",
+      "     method: 'post',",
+      "     contentType: 'application/json; charset=UTF-8',",
+      "     data: JSON.stringify(params),",
+      "   });",
+      "}"
     ],
     "description": "快速创建services模板"
   },
-  "create dva model reducers object": {
-    "prefix": "adcmrd",
+  "create dva services form post": {
+    "prefix": "adcsfp",
     "body": [
-      "reducers: {",
-      "  ${1:''}(state, action) {",
-      "    return { ...state, ...action.payload };",
-      "  },",
-      "},"
+      "export async const postQuery = (params) => {",
+      "   return request('URL', {",
+      "     method: 'post',",
+      "     data: qs.stringify(params),",
+      "   });",
+      "}"
     ],
-    "description": "快速创建model reducers对象"
+    "description": "快速创建form post 方法"
   },
-  "create dva model reducers methods": {
-    "prefix": "adcmrdm",
+  "create dva services json post": {
+    "prefix": "adcsjp",
     "body": [
-      "  ${1:''}(state, action) {",
-      "    return { ...state, ...action.payload };",
-      "  },"
+      "export async const jsonPost = (params) => {",
+      "   return request('URL', {",
+      "     method: 'post',",
+      "     contentType: 'application/json; charset=UTF-8',",
+      "     data: JSON.stringify(params),",
+      " });",
+      "}"
     ],
-    "description": "快速创建model reducers 方法"
-  },
-  "create dva model effects object": {
-    "prefix": "adcmef",
-    "body": [
-      "effects: {",
-      "  *${1:''}({ payload }, { call, put }) {",
-      "    yield put({ type: 'save' });",
-      "  },",
-      "},"
-    ],
-    "description": "快速创建model effects 对象"
-  },
-  "create dva model effects methods": {
-    "prefix": "adcmefm",
-    "body": [
-      "  *${1:''}({ payload }, { call, put }) {",
-      "    yield put({ type: 'save' });",
-      "  },"
-    ],
-    "description": "快速创建model effects 方法"
+    "description": "快速创建 coontentType 为json的post请求方法"
   },
   "create dva model subscriptions object": {
     "prefix": "adcmss",
     "body": [
       "subscriptions: {",
-      "  setup({ dispatch, history }) {",
+      "   setup({ dispatch, history }) {",
       "",
-      "  },",
-      "},"
+      "   },",
+      "}"
     ],
     "description": "快速创建model subscriptions 对象"
+  },
+  "create constructor": {
+    "prefix": "constructor",
+    "body": [
+      "constructor(props) {",
+      "   super(props);",
+      "   this.state = {",
+      "",   
+      "   };",
+      "}"
+    ],
+    "description": "快速创建constructor 方法"
+  },
+  "create const state": {
+    "prefix": "cs",
+    "body": [
+      "const {  } = this.state;"
+    ],
+    "description": "快速创建const state解构语法"
+  },
+  "create const props": {
+    "prefix": "cp",
+    "body": [
+      "const {  } = this.props;"
+    ],
+    "description": "快速创建const props解构语法"
+  },
+  "create setState": {
+    "prefix": "sst",
+    "body": [
+      "this.setState({ });"
+    ],
+    "description": "快速创建setState"
   }
 }

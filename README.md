@@ -1,65 +1,285 @@
-# dvajs-snippets README
+# VS Code Dvajs/React snippets README
 
-This is the README for your extension "dvajs-snippets". After writing up a brief description, we recommend including the following sections.
+基于DvaJs的自动补全插件,补全命令默认以ad开头，意为Ant Dvajs的简写;
 
-## Features
+这是一个未完善版本插件，依据现有基于DvaJs的项目结构和语法，补全需要的语法结构，所以，您有什么更好的建议，请通过邮箱联系我：byzhkc3@gmail.com
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Supported languages (file extensions)[支持的语言及文件后缀]
+- JavaScript (.js)
+- JavaScript React (.jsx)
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
+## Extension Settings(插件设置)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+因为目前没有发布到vs code的官方应用商店，所以需要您手动安装并启用本插件，步骤如下:
+1,下载邮件中 名为 DvaJs-Snippets 的附件文件 
+2,打开终端执行 cd .vscode/extensions/ && open .
+3,将解压出来的 DvaJs-Snippets 目录放到 弹出来的 extensions 文件夹下
+4,打开 vs code，选择插件管理（也可以 shift+ command + x 快捷打开）,在DISABLED 选项里找到 DvaJs Snippets 激活并重载即可使用
 
-## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Basic Methods(基础语法)
 
-## Extension Settings
+| Prefix  | Method                                              |
+| ------: | --------------------------------------------------- |
+| `cs→`   | `const {  } = this.state;`                          |
+| `cp→`   | `const {  } = this.props;`                          |
+| `sst→`  | `this.setState({ });`                               |
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
+## Dva模版生成指令 使用方式:指令+tab键，或者 指令 + 回车键;
 
-This extension contributes the following settings:
+### `adcc` 快速创建普通组件
+```javascript
+import React,{ Component } from 'react';
+import PropTypes from 'prop-types';
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+class FileName extends Component{
+  render(){
+   return (
+       <div>
+       FileName
+       </div>
+     );
+   }
+};
 
-## Known Issues
+FileName.propTypes = {
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+};
 
-## Release Notes
+export default FileName;
 
-Users appreciate release notes as you update your extension.
+```
 
-### 1.0.0
+### `adcpc` 快速创建PureComponent组件
+```javascript
+import React,{ PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-Initial release of ...
+class FileName extends PureComponent{
+  render(){
+   return (
+       <div>
+         FileName
+       </div>
+     );
+   }
+};
 
-### 1.0.1
+FileName.propTypes = {
 
-Fixed issue #.
+};
 
-### 1.1.0
+export default FileName;
 
-Added features X, Y, and Z.
+```
+
+### `adcrpc` 快速创建路由页面组件带connect连接
+```javascript
+import React,{ PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'dva';
+import styles from './FileName.less';
+
+class FileName extends PureComponent{
+  render(){
+     return (
+       <Fragment>
+         FileName
+       </Fragment>
+     );
+   }
+}
+
+FileName.propTypes = {
+
+};
+
+const mapStateToProps = (state) => {
+   const { loading } = state['NAMESPACE'];
+   return {
+       loading
+   };
+}
+
+const mapDispatchToProps = {
+
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(FileName);
+
+```
+
+
+### `adcnrpc` 快速创建非路由页面组件带connect连接
+```javascript
+import React,{ PureComponent, Fragment } from 'react';
+import { connect } from 'dva-no-router';
+import styles from './FileName.less';
+
+class FileName extends PureComponent{
+  render(){
+       return (
+         <Fragment>
+           FileName
+         </Fragment>
+       );
+   }
+}
+
+FileName.propTypes = {
+};
+
+const mapStateToProps = (state) => {
+ const { loading } = state['NAMESPACE'];
+ return {
+     loading
+ };
+}
+
+const mapDispatchToProps = {
+
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(FileName);
+
+```
+
+### `admodel` 快速创建model
+```javascript
+export default {
+
+  namespace: '',
+
+  state: {},
+
+  reducers: {
+    save(state, action) {
+      return { ...state, ...action.payload };
+    },
+  },
+
+  effects: {
+    *fetch({ payload }, { call, put }) {
+      yield put({ type: 'save' });
+    },
+  },
+
+  subscriptions: {
+   init({dispatch}){
+      dispatch({ });
+   }
+  },
+
+};
+
+```
+
+### `admrd` 快速创建model reducers对象
+```javascript
+reducers: {
+    NAME(state, action) {
+      return { ...state, ...action.payload };
+    },
+  }
+```
+
+ ### `admrdm` 快速创建model reducers 方法
+```javascript
+NAME(state, action) {
+    return { ...state, ...action.payload };
+},
+```
+
+### `admrd` 快速创建model reducers 方法
+```javascript
+reducers: {
+    NAME(state, action) {
+      return { ...state, ...action.payload };
+    },
+  }
+```
+
+### `admef` 快速创建model effects 对象
+```javascript
+effects: {
+    *NAME({ payload }, { call, put }) {
+      yield put({ type: 'save' });
+    },
+}
+```
+
+### `admefm` 快速创建model effects 方法
+```javascript
+*NAME({ payload }, { call, put }) {
+    yield put({ type: 'save' });
+},
+```
+
+### `adcs` 快速创建services模板
+```javascript
+import request from '../utils/request';
+import qs from 'qs';
+
+export async const getMethods = () => {
+  return request('URL');
+};
+export async const postQuery = (params) => {
+  return request('URL', {
+    method: 'post',
+    data: qs.stringify(params),
+  });
+}
+export async const jsonPost = (params) => {
+  return request('URL', {
+    method: 'post',
+    contentType: 'application/json; charset=UTF-8',
+    data: JSON.stringify(params),
+  });
+}
+```
+
+### `adcsfp` 快速创建form post 方法
+```javascript
+export async const postQuery = (params) => {
+    return request('URL', {
+        method: 'post',
+        data: qs.stringify(params),
+    });
+}
+```
+
+### `adcsfp` 快速创建 coontentType 为json的post请求方法
+```javascript
+export async const jsonPost = (params) => {
+  return request('URL', {
+    method: 'post',
+    contentType: 'application/json; charset=UTF-8',
+    data: JSON.stringify(params),
+ });
+}
+```
+
+### `adcmss` 快速创建model subscriptions 对象
+```javascript
+subscriptions: {
+  setup({ dispatch, history }) {
+
+  },
+}
+```
+
+### `constructor` 快速创建constructor 方法
+```javascript
+constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+}
+```
 
 -----------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**

@@ -3,7 +3,9 @@
     "displayName": "DvaJs Snippets",
     "description": "Simple DvaJs Snippets generator",
     "version": "0.0.1",
-    "publisher": "byzhkc3",
+    "repository":"https://github.com/Byzhkc3/DvaJs-Snippets",
+    "publisher": "zkiie",
+    "icon": "img/logo.png",
     "keywords": [
 		"snippets",
 		"react",
